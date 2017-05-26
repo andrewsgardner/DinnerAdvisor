@@ -1,0 +1,23 @@
+# logs #
+########
+*.log
+npm-debug.log*
+
+# os generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# node and gulp #
+#################
+node_modules
+.npm
+
+# local dev #
+#############
+tmp
