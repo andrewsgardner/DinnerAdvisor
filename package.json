@@ -1,0 +1,19 @@
+{
+  "name": "DinnerAdvisor",
+  "version": "1.0.0",
+  "description": "DinnerAdvisor is a web app that helps you decide what to cook for dinner.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andrewsgardner/DinnerAdvisor.git"
+  },
+  "author": "Andrew S. Gardner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andrewsgardner/DinnerAdvisor/issues"
+  },
+  "homepage": "https://github.com/andrewsgardner/DinnerAdvisor"
+}
