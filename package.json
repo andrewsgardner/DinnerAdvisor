@@ -6,6 +6,13 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "dependencies": {
+    "express": "^4.15.3",
+    "body-parser": "^1.17.2",
+    "mongojs": "^2.4.0",
+    "requirejs": "^2.3.3",
+    "gulp": "^3.9.1"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/andrewsgardner/DinnerAdvisor.git"
