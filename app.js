@@ -39,3 +39,25 @@ app.post('/recipes', function(req, res){
     }
   });
 });
+
+// update recipes in the database
+app.put('/recipes/:id', function(req, res){
+  db.recipes.findAndModify({query:{_id: mongojs.ObjectId(req.params.id)},
+  update:{ $set{
+    dishName: req.body.dishName,
+    cookTime: req.body.cookTime,
+    cuisineType: req.body.cuisineType,
+    healthRating: req.body.healthRating,
+    submitterName: req.body.submitterName,
+    recipeContent: req.body.recipeContent
+  }},
+  new: true
+    }, function(err, doc){
+    if(err){
+      res.send(err);
+    } else {
+      console.log('Updating Recipe...');
+      res.json(doc);
+    }
+  });
+});
