@@ -61,3 +61,15 @@ app.put('/recipes/:id', function(req, res){
     }
   });
 });
+
+// remove recipes in the database
+app.delete('/recipes/:id', function(req, res){
+  db.recipes.remove({_id: mongojs.ObjectId(req.params.id)}, function(err, doc){
+    if(err){
+      res.send(err);
+    } else {
+      console.log('Removing Recipe...');
+      res.json(doc);
+    }
+  });
+});
