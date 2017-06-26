@@ -73,3 +73,9 @@ app.delete('/recipes/:id', function(req, res){
     }
   });
 });
+
+// NODE SERVER
+// ===========
+
+app.listen(3000);
+console.log('Welcome to DinnerAdvisor!\n\nPlease go to http://localhost:3000 to view the frontend UI');
