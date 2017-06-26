@@ -1,5 +1,5 @@
-// LOAD REQUIRED NODE MODULES
-// ==========================
+// DEPENDENCIES
+// ============
 
 var express = require('express');
 var app = express();
