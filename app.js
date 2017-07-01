@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var mongojs = require('mongojs');
 var db = mongojs('dinneradvisor',['recipes']);
+var port = 3000;
 
 // MIDDLEWARE
 // ==========
@@ -78,5 +79,5 @@ app.delete('/recipes/:id', function(req, res){
 // NODE SERVER
 // ===========
 
-app.listen(3000);
-console.log('Welcome to DinnerAdvisor!\n\nPlease go to http://localhost:3000 to view the frontend UI');
+app.listen(port);
+console.log('Welcome to DinnerAdvisor!\n\nPlease go to http://localhost:' + port + ' to view the frontend UI');
