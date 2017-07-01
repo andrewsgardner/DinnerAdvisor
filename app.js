@@ -43,7 +43,7 @@ app.post('/recipes', function(req, res){
 // update recipes in the database
 app.put('/recipes/:id', function(req, res){
   db.recipes.findAndModify({query:{_id: mongojs.ObjectId(req.params.id)},
-  update:{ $set{
+  update:{ $set:{
     dishName: req.body.dishName,
     cookTime: req.body.cookTime,
     cuisineType: req.body.cuisineType,
