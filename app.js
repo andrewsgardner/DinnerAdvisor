@@ -4,7 +4,8 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var path = require('mongojs');
+var path = require('path');
+var mongojs = require('mongojs');
 var db = mongojs('dinneradvisor',['recipes']);
 
 // MIDDLEWARE
