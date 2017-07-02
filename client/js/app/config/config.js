@@ -1,7 +1,7 @@
 requirejs.config({
   'baseUrl': './js/app',
   'paths': {
-    // core libraries
+    // load core libraries
     'jquery': '../lib/jquery-3.2.1'
   }
 });
