@@ -13,7 +13,7 @@ var port = 3000;
 // ==========
 
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'client')));
+app.use(express.static(path.join(__dirname, 'dist')));
 
 // API ROUTES
 // ==========
