@@ -1,70 +1,38 @@
-// load gulp
-var gulp = require('gulp'),
-    gutil = require('gulp-util'),
-    plugins = require('gulp-load-plugins')({
-      rename: {
-        'gulp-live-reload': 'serve'
-      }
-    });
+var gulp = require('gulp');
+var concat = require('gulp-concat');
+var less = require('gulp-less');
+var rename = require('gulp-rename');
+var uglify = require('gulp-uglify');
 
-// start watching: run "gulp"
-gulp.task('default', ['watch']);
+var lessOrigin = './src/less/*.less',
+    cssDest = './dist/css';
 
-// run "gulp server"
-gulp.task('server', ['serve', 'watch']);
+var jsOrigin = './src/js/app/**/*.js',
+    jsDest = './dist/js/app';
 
-// minify custom js: run manually with: "gulp build-js"
-gulp.task('build-js', function(){
-  return gulp.src('src/js/app/**/*.js')
-    .pipe(plugins.jshint())
-    .pipe(plugins.jshint.reporter('jshint-stylish'))
-    .pipe(plugins.uglify({
-      output: {
-        'ascii_only': true
-      }
-    }))
-    .pipe(plugins.concat('scripts.min.js'))
-    .pipe(gulp.dest('dist/js'));
-});
-
-// compile less to css: run manually with: "gulp build-css"
+// compile less into css
 gulp.task('build-css', function(){
-  return gulp.src('src/less/main.less')
-    .pipe(plugins.plumber())
-    .pipe(plugins.less())
-    .on('error', function(err){
-      gutil.log(err);
-      this.emit('end');
-    })
-    .pipe(plugins.autoprefixer({
-      browsers: [
-        '> 1%',
-        'last 2 versions',
-        'firefox >= 4',
-        'safari 7',
-        'safari 8',
-        'IE 8',
-        'IE 9',
-        'IE 10',
-        'IE 11'
-      ],
-    cascade: false
-    }))
-    .pipe(plugins.cssmin())
-    .pipe(gulp.dest('dist/css')).on('error', gutil.log);
+  return gulp.src(lessOrigin)
+  .pipe(concat('main.css'))
+  .pipe(less())
+  .pipe(gulp.dest(cssDest));
 });
 
-// default task
+// concatenate and uglify js
+gulp.task('build-js', function(){
+  return gulp.src(jsOrigin)
+    .pipe(concat('main.js'))
+    .pipe(gulp.dest(jsDest))
+    .pipe(rename('main.min.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(jsDest));
+});
+
+// watch for changes
 gulp.task('watch', function(){
-  gulp.watch('src/js/app/**/*.js', ['build-js']);
-  gulp.watch('src/less/**/*.less', ['build-css']);
+  gulp.watch('./src/less/**/*.less', ['build-css']);
+  gulp.watch('./src/js/app/**/*.js', ['build-js']);
 });
 
-// livereload server at: http://localhost:3000
-gulp.task('serve', function(){
-  var server = plugins.serve.static('/', 3000);
-  server.start();
-  gulp.watch(['dist/*'], function(file){
-    server.notify.apply(server, [file]);
-  });
-});
+// perform all tasks with the command: gulp
+gulp.task('default', ['watch', 'build-css', 'build-js']);
