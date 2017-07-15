@@ -7,8 +7,11 @@ var uglify = require('gulp-uglify');
 var lessOrigin = './src/less/*.less',
     cssDest = './dist/css';
 
-var jsOrigin = './src/js/app/**/*.js',
-    jsDest = './dist/js/app';
+var jsAppOrigin = './src/js/app/**/*.js',
+    jsAppDest = './dist/js/app';
+
+var jsLibOrigin = './src/js/lib/**/*.js',
+    jsLibDest = './dist/js/lib';
 
 // compile less into css
 gulp.task('build-css', function(){
@@ -18,21 +21,28 @@ gulp.task('build-css', function(){
   .pipe(gulp.dest(cssDest));
 });
 
-// concatenate and uglify js
-gulp.task('build-js', function(){
-  return gulp.src(jsOrigin)
+// concatenate and uglify app js
+gulp.task('build-js-app', function(){
+  return gulp.src(jsAppOrigin)
     .pipe(concat('main.js'))
-    .pipe(gulp.dest(jsDest))
+    .pipe(gulp.dest(jsAppDest))
     .pipe(rename('main.min.js'))
     .pipe(uglify())
-    .pipe(gulp.dest(jsDest));
+    .pipe(gulp.dest(jsAppDest));
+});
+
+// copy js libs
+gulp.task('build-js-lib', function(){
+  gulp.src(jsLibOrigin)
+    .pipe(gulp.dest(jsLibDest));
 });
 
 // watch for changes
 gulp.task('watch', function(){
   gulp.watch('./src/less/**/*.less', ['build-css']);
-  gulp.watch('./src/js/app/**/*.js', ['build-js']);
+  gulp.watch('./src/js/app/**/*.js', ['build-js-app']);
+  gulp.watch('./src/js/lib/**/*js', ['build-js-lib']);
 });
 
 // perform all tasks with the command: gulp
-gulp.task('default', ['watch', 'build-css', 'build-js']);
+gulp.task('default', ['watch', 'build-css', 'build-js-app', 'build-js-lib']);
