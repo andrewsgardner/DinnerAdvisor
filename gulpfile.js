@@ -13,6 +13,9 @@ var jsAppOrigin = './src/js/app/**/*.js',
 var jsLibOrigin = './src/js/lib/**/*.js',
     jsLibDest = './dist/js/lib';
 
+var fontsOrigin = './src/fonts/**/*.+(eot|svg|ttf|woff|woff2)',
+    fontsDest = './dist/fonts';
+
 // compile less into css
 gulp.task('build-css', function(){
   return gulp.src(lessOrigin)
@@ -37,12 +40,25 @@ gulp.task('build-js-lib', function(){
     .pipe(gulp.dest(jsLibDest));
 });
 
+// copy fonts
+gulp.task('build-fonts', function(){
+  gulp.src(fontsOrigin)
+    .pipe(gulp.dest(fontsDest));
+});
+
 // watch for changes
 gulp.task('watch', function(){
   gulp.watch('./src/less/**/*.less', ['build-css']);
   gulp.watch('./src/js/app/**/*.js', ['build-js-app']);
   gulp.watch('./src/js/lib/**/*js', ['build-js-lib']);
+  gulp.watch('./src/fonts/**/*.+(eot|svg|ttf|woff|woff2)', ['build-fonts']);
 });
 
 // perform all tasks with the command: gulp
-gulp.task('default', ['watch', 'build-css', 'build-js-app', 'build-js-lib']);
+gulp.task('default', [
+  'watch',
+  'build-css',
+  'build-js-app',
+  'build-js-lib',
+  'build-fonts'
+]);
