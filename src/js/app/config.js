@@ -15,5 +15,3 @@ requirejs.config({
     }
   }
 });
-
-requirejs(['main']);
