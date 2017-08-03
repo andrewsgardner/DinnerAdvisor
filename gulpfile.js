@@ -7,8 +7,11 @@ var uglify = require('gulp-uglify');
 var lessOrigin = './src/less/*.less',
     cssDest = './dist/css';
 
-var jsAppOrigin = './src/js/app/**/*.js',
-    jsAppDest = './dist/js/app';
+var jsAppOrigin = [
+    './src/js/app/config.js',
+    './src/js/app/**/!(config)*.js'
+  ],
+  jsAppDest = './dist/js/app';
 
 var jsLibOrigin = './src/js/lib/**/*.js',
     jsLibDest = './dist/js/lib';
