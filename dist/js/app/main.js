@@ -19,6 +19,7 @@ requirejs.config({
   }
 });
 
+// main app module
 define(
   //-------------------------------------------------------------------
   // DEPENDENCIES
