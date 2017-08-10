@@ -7,13 +7,33 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var mongojs = require('mongojs');
 var db = mongojs('dinneradvisor',['recipes']);
-var port = 3000;
+
+// ENVIRONMENT
+// ===========
+process.env.NODE_ENV = 'development';
 
 // MIDDLEWARE
 // ==========
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'dist')));
+app.locals.port = 3000;
+
+if (process.env.NODE_ENV === 'production'){
+
+  app.locals.environment = 'https://editpath.com/dinneradvisor';
+  console.log('Running in production environment...');
+
+} else if (process.env.NODE_ENV === 'development'){
+
+  app.locals.environment = 'http://localhost';
+  console.log('Running in development environment...');
+
+} else {
+
+  console.log('Environment not found...');
+
+}
 
 // API ROUTES
 // ==========
@@ -79,5 +99,5 @@ app.delete('/recipes/:id', function(req, res){
 // NODE SERVER
 // ===========
 
-app.listen(port);
-console.log('Welcome to DinnerAdvisor!\n\nPlease go to http://localhost:' + port + ' to view the frontend UI');
+app.listen(app.locals.port);
+console.log('Welcome to DinnerAdvisor!\n\nPlease go to ' + app.locals.environment + ':' + app.locals.port + ' to view the frontend UI');
