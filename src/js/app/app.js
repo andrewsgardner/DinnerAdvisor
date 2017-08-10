@@ -13,7 +13,7 @@ define(
 
     // get recipes from the database
     function getRecipes(){
-      $.get('http://localhost:3000/recipes', function(data){
+      $.get(app.locals.environment + ':' + app.locals.port + '/recipes', function(data){
         viewModel.recipes(data);
       });
     }
@@ -52,7 +52,7 @@ define(
         });
 
         $.ajax({
-          url: "http://localhost:3000/recipes",
+          url: app.locals.environment + ":" + app.locals.port + "/recipes",
           data: JSON.stringify({
             "dishName": dishName,
             "cookTime": cookTime,
