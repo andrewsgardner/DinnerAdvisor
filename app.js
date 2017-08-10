@@ -22,16 +22,16 @@ app.locals.port = 3000;
 if (process.env.NODE_ENV === 'production'){
 
   app.locals.environment = 'https://editpath.com/dinneradvisor';
-  console.log('Running in production environment...');
+  console.log('Running in production environment...\n');
 
 } else if (process.env.NODE_ENV === 'development'){
 
   app.locals.environment = 'http://localhost';
-  console.log('Running in development environment...');
+  console.log('Running in development environment...\n');
 
 } else {
 
-  console.log('Environment not found...');
+  console.log('Environment not found...\n');
 
 }
 
