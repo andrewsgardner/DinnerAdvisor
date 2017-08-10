@@ -92,6 +92,47 @@ define(
         });
       }
 
+      // update recipe
+      self.updateRecipe = function(){
+        var id = self.updateId;
+        var dishName = $('#dishName').val();
+        var cookTime = $('#cookTime').val();
+        var cuisineType = $('#cuisineType').val();
+        var healthRating = $('#healthRating').val();
+        var submitterName = $('#submitterName').val();
+
+        self.recipes.remove(function(item){
+          return item._id == id
+        });
+
+        self.recipes.push({
+          dishName: dishName,
+          cookTime: cookTime,
+          cuisineType: cuisineType,
+          healthRating: healthRating,
+          submitterName: submitterName
+        });
+
+        $.ajax({
+          url: app.locals.environment + ":" + app.locals.port + "/recipes" + id,
+          data: JSON.stringify({
+            "dishName": dishName,
+            "cookTime": cookTime,
+            "cuisineType": cuisineType,
+            "healthRating": healthRating,
+            "submitterName": submitterName
+          }),
+          type: "PUT",
+          contentType: "application/json",
+          success: function(data){
+            console.log('Recipe updated...');
+          },
+          error: function(xhr, status, err){
+            console.log(err);
+          }
+        });
+      }
+
     }
 
     var viewModel = new ViewModel();
