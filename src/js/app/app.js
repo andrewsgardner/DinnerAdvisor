@@ -93,7 +93,7 @@ define(
         });
 
         $.ajax({
-          url: app.locals.environment + ":" + app.locals.port + "/recipes" + id,
+          url: app.locals.environment + ":" + app.locals.port + "/recipes/" + id,
           data: JSON.stringify({
             "dishName": dishName,
             "cookTime": cookTime,
