@@ -45,7 +45,7 @@ app.get('/recipes', function(req, res){
       res.send(err);
     } else {
       console.log('Getting All Recipes...');
-      res.json(doc);
+      res.json(docs);
     }
   });
 });
