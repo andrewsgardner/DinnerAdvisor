@@ -26,8 +26,8 @@ define(
       self.recipeInputDishName = ko.observableArray();
       self.recipeInputCookTime = ko.observableArray();
       self.recipeInputCuisineType = ko.observableArray();
-      self.recipeHealthRating = ko.observableArray();
-      self.recipeSubmitterName = ko.observableArray();
+      self.recipeInputHealthRating = ko.observableArray();
+      self.recipeInputSubmitterName = ko.observableArray();
       self.selectedRecipes = ko.observableArray();
       self.isUpdate = ko.observableArray(false);
       self.updateId = ko.observableArray();
