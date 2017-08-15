@@ -185,6 +185,15 @@ define(
         self.selectedRecipes.removeAll();
       }
 
+      // health rating scale
+      self.healthRatingScale = ko.observableArray([
+        '1',
+        '2',
+        '3',
+        '4',
+        '5'
+      ]);
+
     }
 
     var viewModel = new ViewModel();
