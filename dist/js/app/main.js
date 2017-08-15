@@ -161,6 +161,30 @@ define(
         self.recipeInputContent(recipeContent);
       }
 
+      // delete selected recipes
+      self.deleteSelectedRecipes = function(){
+
+        $.each(self.selectedRecipes(), function(index, value){
+          var id = self.selectedRecipes()[index]._id;
+
+          $.ajax({
+            url: app.locals.environment + ":" + app.locals.port + "/recipes/" + id,
+            type: "DELETE",
+            async: true,
+            timeout: 10000,
+            success: function(data){
+              console.log('Recipe removed...');
+            },
+            error: function(xhr, status, err){
+              console.log(err);
+            }
+          });
+        });
+
+        self.recipes.removeAll(self.selectedRecipes());
+        self.selectedRecipes.removeAll();
+      }
+
     }
 
     var viewModel = new ViewModel();
