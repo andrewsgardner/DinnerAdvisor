@@ -187,11 +187,11 @@ define(
 
       // health rating scale
       self.healthRatingScale = ko.observableArray([
-        '1',
-        '2',
-        '3',
-        '4',
-        '5'
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
       ]);
 
     }
