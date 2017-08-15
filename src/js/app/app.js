@@ -28,6 +28,7 @@ define(
       self.recipeInputCuisineType = ko.observableArray();
       self.recipeInputHealthRating = ko.observableArray();
       self.recipeInputSubmitterName = ko.observableArray();
+      self.recipeInputContent = ko.observable();
       self.selectedRecipes = ko.observableArray();
       self.isUpdate = ko.observableArray(false);
       self.updateId = ko.observableArray();
@@ -42,13 +43,15 @@ define(
         var cuisineType = $('#cuisineType').val();
         var healthRating = $('#healthRating').val();
         var submitterName = $('#submitterName').val();
+        var recipeContent = $('#recipeContent').val();
 
         self.recipes.push({
           dishName: dishName,
           cookTime: cookTime,
           cuisineType: cuisineType,
           healthRating: healthRating,
-          submitterName: submitterName
+          submitterName: submitterName,
+          recipeContent: recipeContent
         });
 
         $.ajax({
@@ -58,7 +61,8 @@ define(
             "cookTime": cookTime,
             "cuisineType": cuisineType,
             "healthRating": healthRating,
-            "submitterName": submitterName
+            "submitterName": submitterName,
+            "recipeContent": recipeContent
           }),
           type: "POST",
           contentType: "application/json",
@@ -79,6 +83,7 @@ define(
         var cuisineType = $('#cuisineType').val();
         var healthRating = $('#healthRating').val();
         var submitterName = $('#submitterName').val();
+        var recipeContent = $('#recipeContent').val();
 
         self.recipes.remove(function(item){
           return item._id == id
@@ -89,7 +94,8 @@ define(
           cookTime: cookTime,
           cuisineType: cuisineType,
           healthRating: healthRating,
-          submitterName: submitterName
+          submitterName: submitterName,
+          recipeContent: recipeContent
         });
 
         $.ajax({
@@ -99,7 +105,8 @@ define(
             "cookTime": cookTime,
             "cuisineType": cuisineType,
             "healthRating": healthRating,
-            "submitterName": submitterName
+            "submitterName": submitterName,
+            "recipeContent": recipeContent
           }),
           type: "PUT",
           contentType: "application/json",
