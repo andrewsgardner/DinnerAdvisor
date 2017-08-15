@@ -119,6 +119,27 @@ define(
         });
       }
 
+      // edit first selected recipe
+      self.editFirstSelected = function(){
+
+        self.updateId = self.selectedRecipes()[0]._id;
+
+        var dishName = self.selectedRecipes()[0].dishName;
+        var cookTime = self.selectedRecipes()[0].cookTime;
+        var cuisineType = self.selectedRecipes()[0].cuisineType;
+        var healthRating = self.selectedRecipes()[0].healthRating;
+        var submitterName = self.selectedRecipes()[0].submitterName;
+        var recipeContent = self.selectedRecipes()[0].recipeContent;
+
+        self.isUpdate(true);
+        self.recipeInputDishName(dishName);
+        self.recipeInputCookTime(cookTime);
+        self.recipeInputCuisineType(cuisineType);
+        self.recipeInputHealthRating(healthRating);
+        self.recipeInputSubmitterName(submitterName);
+        self.recipeInputContent(recipeContent);
+      }
+
     }
 
     var viewModel = new ViewModel();
