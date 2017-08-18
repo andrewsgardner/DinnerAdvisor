@@ -24,6 +24,17 @@
       </div>
     </nav>
 
+    <!-- BEGIN tmp ui components -->
+    <input data-bind="value: recipeInputDishName, valueUpdate: 'keypress'" type="text" id="dishName" class="form-control" placeholder="Enter Dish Name">
+    <input data-bind="value: recipeInputCuisineType, valueUpdate: 'keypress'" type="text" id="cuisineType" class="form-control" placeholder="Enter Cuisine Type">
+    <input data-bind="value: recipeInputSubmitterName, valueUpdate: 'keypress'" type="text" id="submitterName" class="form-control" placeholder="Enter Your Name">
+
+    <button data-bind="click: addRecipe, enable: recipeInputDishName, visible: !isUpdate()" class="btn btn-primary">Add Recipe</button>
+    <button data-bind="click: updateRecipe, enable: recipeInputDishName, visible: isUpdate" class="btn btn-primary">Update Recipe</button>
+    <button data-bind="click: editFirstSelected, enable: canEdit" class="btn btn-info">Edit</button>
+    <button data-bind="click: deleteSelectedRecipes, enable: canEdit" class="btn btn-danger">Delete</button>
+    <!-- END tmp ui components -->
+
     <script data-main="js/app/main.min" src="js/lib/require.js"></script>
   </body>
 </html>
