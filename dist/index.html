@@ -25,14 +25,54 @@
     </nav>
 
     <!-- BEGIN tmp ui components -->
-    <input data-bind="value: recipeInputDishName, valueUpdate: 'keypress'" type="text" id="dishName" class="form-control" placeholder="Enter Dish Name">
-    <input data-bind="value: recipeInputCuisineType, valueUpdate: 'keypress'" type="text" id="cuisineType" class="form-control" placeholder="Enter Cuisine Type">
-    <input data-bind="value: recipeInputSubmitterName, valueUpdate: 'keypress'" type="text" id="submitterName" class="form-control" placeholder="Enter Your Name">
-
-    <button data-bind="click: addRecipe, enable: recipeInputDishName, visible: !isUpdate()" class="btn btn-primary">Add Recipe</button>
-    <button data-bind="click: updateRecipe, enable: recipeInputDishName, visible: isUpdate" class="btn btn-primary">Update Recipe</button>
-    <button data-bind="click: editFirstSelected, enable: canEdit" class="btn btn-info">Edit</button>
-    <button data-bind="click: deleteSelectedRecipes, enable: canEdit" class="btn btn-danger">Delete</button>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <input data-bind="value: recipeInputDishName, valueUpdate: 'keypress'" type="text" id="dishName" class="form-control" placeholder="Enter Dish Name">
+          <input data-bind="value: recipeInputCookTime, valueUpdate: 'keypress'" type="text" id="cookTime" class="form-control" placeholder="Enter Cook Time">
+        </div>
+        <div class="col-md-3">
+          <input data-bind="value: recipeInputCuisineType, valueUpdate: 'keypress'" type="text" id="cuisineType" class="form-control" placeholder="Enter Cuisine Type">
+          <select data-bind="value: recipeInputHealthRating, options: healthRatingScale, optionsCaption: 'Choose Health Rating'" id="healthRating" class="form-control"></select>
+        </div>
+        <div class="col-md-3">
+          <input data-bind="value: recipeInputSubmitterName, valueUpdate: 'keypress'" type="text" id="submitterName" class="form-control" placeholder="Enter Your Name">
+          <input data-bind="value: recipeInputContent, valueUpdate: 'keypress'" type="text" id="recipeContent" class="form-control" placeholder="Enter Recipe Content">
+        </div>
+        <div class="col-md-3">
+          <button data-bind="click: addRecipe, enable: recipeInputDishName, visible: !isUpdate()" class="btn btn-primary">Add Recipe</button>
+          <button data-bind="click: updateRecipe, enable: recipeInputDishName, visible: isUpdate" class="btn btn-primary">Update Recipe</button>
+          <button data-bind="click: editFirstSelected, enable: canEdit" class="btn btn-info">Edit</button>
+          <button data-bind="click: deleteSelectedRecipes, enable: canEdit" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+      <br><br>
+      <div class="row">
+        <div class="col-md-12">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Dish Name</th>
+                <th>Cuisine Type</th>
+                <th>Submitter Name</th>
+              </tr>
+            </thead>
+            <tbody data-bind="foreach: recipes">
+              <tr>
+                <td><input data-bind="value: $data, checked: $parent.selectedRecipes" type="checkbox"></td>
+                <td data-bind="text: dishName"></td>
+                <td data-bind="text: cookTime"></td>
+                <td data-bind="text: healthRating"></td>
+                <td data-bind="text: cuisineType"></td>
+                <td data-bind="text: submitterName"></td>
+                <td data-bind="text: recipeContent"></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
     <!-- END tmp ui components -->
 
     <script data-main="js/app/main.min" src="js/lib/require.js"></script>

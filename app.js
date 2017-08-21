@@ -99,5 +99,5 @@ app.delete('/recipes/:id', function(req, res){
 // NODE SERVER
 // ===========
 
-app.listen(app.locals.port);
+app.listen(3000);
 console.log('Welcome to DinnerAdvisor!\n\nPlease go to ' + app.locals.environment + ':' + app.locals.port + ' to view the frontend UI');

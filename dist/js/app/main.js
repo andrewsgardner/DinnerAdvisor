@@ -33,26 +33,24 @@ define(
     "use strict";
 
     // get recipes from the database
-    function getRecipes(){
-      $.get(app.locals.environment + ':' + app.locals.port + '/recipes', function(data){
-        viewModel.recipes(data);
-      });
-    }
+    $.getJSON("http://localhost:3000/recipes", function(data){
+      viewModel.recipes(data);
+    })
 
     // main viewModel
     function ViewModel(){
       var self = this;
 
       self.recipes = ko.observableArray();
-      self.recipeInputDishName = ko.observableArray();
-      self.recipeInputCookTime = ko.observableArray();
-      self.recipeInputCuisineType = ko.observableArray();
-      self.recipeInputHealthRating = ko.observableArray();
-      self.recipeInputSubmitterName = ko.observableArray();
+      self.recipeInputDishName = ko.observable();
+      self.recipeInputCookTime = ko.observable();
+      self.recipeInputCuisineType = ko.observable();
+      self.recipeInputHealthRating = ko.observable();
+      self.recipeInputSubmitterName = ko.observable();
       self.recipeInputContent = ko.observable();
       self.selectedRecipes = ko.observableArray();
-      self.isUpdate = ko.observableArray(false);
-      self.updateId = ko.observableArray();
+      self.isUpdate = ko.observable(false);
+      self.updateId = ko.observable();
       self.canEdit = ko.computed(function(){
         return self.selectedRecipes().length > 0;
       });
@@ -76,7 +74,7 @@ define(
         });
 
         $.ajax({
-          url: app.locals.environment + ":" + app.locals.port + "/recipes",
+          url: "http://localhost:3000/recipes",
           data: JSON.stringify({
             "dishName": dishName,
             "cookTime": cookTime,
@@ -120,7 +118,7 @@ define(
         });
 
         $.ajax({
-          url: app.locals.environment + ":" + app.locals.port + "/recipes/" + id,
+          url: "http://localhost:3000/recipes/" + id,
           data: JSON.stringify({
             "dishName": dishName,
             "cookTime": cookTime,
@@ -168,7 +166,7 @@ define(
           var id = self.selectedRecipes()[index]._id;
 
           $.ajax({
-            url: app.locals.environment + ":" + app.locals.port + "/recipes/" + id,
+            url: "http://localhost:3000/recipes/" + id,
             type: "DELETE",
             async: true,
             timeout: 10000,
