@@ -33,7 +33,7 @@ define(
     "use strict";
 
     // get recipes from the database
-    $.getJSON("http://localhost:3000/recipes", function(data){
+    $.getJSON("/recipes", function(data){
       viewModel.recipes(data);
     })
 
@@ -74,7 +74,7 @@ define(
         });
 
         $.ajax({
-          url: "http://localhost:3000/recipes",
+          url: "/recipes",
           data: JSON.stringify({
             "dishName": dishName,
             "cookTime": cookTime,
@@ -118,7 +118,7 @@ define(
         });
 
         $.ajax({
-          url: "http://localhost:3000/recipes/" + id,
+          url: "/recipes/" + id,
           data: JSON.stringify({
             "dishName": dishName,
             "cookTime": cookTime,
@@ -166,7 +166,7 @@ define(
           var id = self.selectedRecipes()[index]._id;
 
           $.ajax({
-            url: "http://localhost:3000/recipes/" + id,
+            url: "/recipes/" + id,
             type: "DELETE",
             async: true,
             timeout: 10000,
