@@ -17,16 +17,17 @@ process.env.NODE_ENV = 'development';
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'dist')));
-app.locals.port = 3000;
 
 if (process.env.NODE_ENV === 'production'){
 
   app.locals.environment = 'https://editpath.com/dinneradvisor';
+  app.locals.port = 3000;
   console.log('Running in production environment...\n');
 
 } else if (process.env.NODE_ENV === 'development'){
 
   app.locals.environment = 'http://localhost';
+  app.locals.port = 3000;
   console.log('Running in development environment...\n');
 
 } else {
@@ -99,5 +100,5 @@ app.delete('/recipes/:id', function(req, res){
 // NODE SERVER
 // ===========
 
-app.listen(3000);
+app.listen(app.locals.port);
 console.log('Welcome to DinnerAdvisor!\n\nPlease go to ' + app.locals.environment + ':' + app.locals.port + ' to view the frontend UI');
