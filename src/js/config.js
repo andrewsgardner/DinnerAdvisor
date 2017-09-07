@@ -6,7 +6,8 @@ requirejs.config({
     "knockout": "knockout-3.4.2",
     "bootstrap": "bootstrap-3.3.7",
     "app": "../app",
-    "recipeModel": "../app/viewModels/recipeModel"
+    "RecipeModel": "../app/viewModels/RecipeModel",
+    "RecipePageModel": "../app/viewModels/RecipePageModel"
   },
   shim: {
     "ko": {

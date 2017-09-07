@@ -3,7 +3,7 @@ define(
   //-------------------------------------------------------------------
   // DEPENDENCIES
   //-------------------------------------------------------------------
-  ["knockout", "jquery", "bootstrap", "recipeModel"],
+  ["knockout", "jquery", "bootstrap", "RecipeModel", "RecipePageModel"],
 
   //-------------------------------------------------------------------
   // MODULE DEFINITION

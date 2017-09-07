@@ -3,7 +3,7 @@ define(
   //-------------------------------------------------------------------
   // DEPENDENCIES
   //-------------------------------------------------------------------
-  ["knockout", "jquery", "bootstrap"],
+  ["knockout", "RecipePageModel"],
 
   //-------------------------------------------------------------------
   // MODULE DEFINITION
@@ -11,7 +11,7 @@ define(
   function(ko, $){
     "use strict";
 
-    function recipeModel(data){
+    function RecipeModel(data){
 
       if (!data){
         data = {};
