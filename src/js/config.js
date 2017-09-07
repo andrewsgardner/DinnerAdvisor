@@ -5,7 +5,8 @@ requirejs.config({
     "jquery": "jquery-3.2.1",
     "knockout": "knockout-3.4.2",
     "bootstrap": "bootstrap-3.3.7",
-    "app": "../app"
+    "app": "../app",
+    "recipeModel": "../app/viewModels/recipeModel"
   },
   shim: {
     "ko": {
