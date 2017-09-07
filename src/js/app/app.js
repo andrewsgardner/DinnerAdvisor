@@ -27,6 +27,7 @@ define(
       self.recipeInputHealthRating = ko.observable();
       self.recipeInputSubmitterName = ko.observable();
       self.recipeInputContent = ko.observable();
+      self.recipeInputStatus = ko.observable();
       self.selectedRecipes = ko.observableArray();
       self.isUpdate = ko.observable(false);
       self.updateId = ko.observable();
@@ -42,6 +43,7 @@ define(
         var healthRating = $('#healthRating').val();
         var submitterName = $('#submitterName').val();
         var recipeContent = $('#recipeContent').val();
+        var status = $('#status').val();
 
         self.recipes.push({
           dishName: dishName,
@@ -49,7 +51,8 @@ define(
           cuisineType: cuisineType,
           healthRating: healthRating,
           submitterName: submitterName,
-          recipeContent: recipeContent
+          recipeContent: recipeContent,
+          status: status
         });
 
         $.ajax({
@@ -60,7 +63,8 @@ define(
             "cuisineType": cuisineType,
             "healthRating": healthRating,
             "submitterName": submitterName,
-            "recipeContent": recipeContent
+            "recipeContent": recipeContent,
+            "status": status
           }),
           type: "POST",
           contentType: "application/json",
@@ -82,6 +86,7 @@ define(
         var healthRating = $('#healthRating').val();
         var submitterName = $('#submitterName').val();
         var recipeContent = $('#recipeContent').val();
+        var status = $('#status').val();
 
         self.recipes.remove(function(item){
           return item._id == id
@@ -93,7 +98,8 @@ define(
           cuisineType: cuisineType,
           healthRating: healthRating,
           submitterName: submitterName,
-          recipeContent: recipeContent
+          recipeContent: recipeContent,
+          status: status
         });
 
         $.ajax({
@@ -104,7 +110,8 @@ define(
             "cuisineType": cuisineType,
             "healthRating": healthRating,
             "submitterName": submitterName,
-            "recipeContent": recipeContent
+            "recipeContent": recipeContent,
+            "status": status
           }),
           type: "PUT",
           contentType: "application/json",
@@ -128,6 +135,7 @@ define(
         var healthRating = self.selectedRecipes()[0].healthRating;
         var submitterName = self.selectedRecipes()[0].submitterName;
         var recipeContent = self.selectedRecipes()[0].recipeContent;
+        var status = self.selectedRecipes()[0].status;
 
         self.isUpdate(true);
         self.recipeInputDishName(dishName);
@@ -136,6 +144,7 @@ define(
         self.recipeInputHealthRating(healthRating);
         self.recipeInputSubmitterName(submitterName);
         self.recipeInputContent(recipeContent);
+        self.recipeInputStatus(status);
       }
 
       // delete selected recipes

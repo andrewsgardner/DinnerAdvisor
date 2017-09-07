@@ -72,7 +72,8 @@ app.put('/recipes/:id', function(req, res){
     cuisineType: req.body.cuisineType,
     healthRating: req.body.healthRating,
     submitterName: req.body.submitterName,
-    recipeContent: req.body.recipeContent
+    recipeContent: req.body.recipeContent,
+    status: req.body.status
   }},
   new: true
     }, function(err, doc){
