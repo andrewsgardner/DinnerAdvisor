@@ -1,0 +1,7 @@
+
+js/app/app.js
+----------------
+js/lib/knockout-3.4.2.js
+js/lib/jquery-3.2.1.js
+js/lib/bootstrap-3.3.7.js
+js/app/app.js

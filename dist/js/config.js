@@ -1,0 +1,1 @@
+requirejs.config({baseUrl:"js/lib",paths:{jquery:"jquery-3.2.1",knockout:"knockout-3.4.2",bootstrap:"bootstrap-3.3.7",app:"../app"},shim:{ko:{exports:["ko"]},jquery:{exports:["$"]},bootstrap:{deps:["jquery"]}}}),requirejs(["app/app"]);
