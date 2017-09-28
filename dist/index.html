@@ -38,6 +38,7 @@
         <div class="col-md-3">
           <input data-bind="value: recipeInputSubmitterName, valueUpdate: 'keypress'" type="text" id="submitterName" class="form-control" placeholder="Enter Your Name">
           <input data-bind="value: recipeInputContent, valueUpdate: 'keypress'" type="text" id="recipeContent" class="form-control" placeholder="Enter Recipe Content">
+          <input data-bind="value: recipeInputStatus, valueUpdate: 'keypress'" type="text" id="status" class="form-control" placeholder="Enter Recipe Status">
         </div>
         <div class="col-md-3">
           <button data-bind="click: addRecipe, enable: recipeInputDishName, visible: !isUpdate()" class="btn btn-primary">Add Recipe</button>
@@ -67,6 +68,7 @@
                 <td data-bind="text: cuisineType"></td>
                 <td data-bind="text: submitterName"></td>
                 <td data-bind="text: recipeContent"></td>
+                <td data-bind="text: status"></td>
               </tr>
             </tbody>
           </table>
