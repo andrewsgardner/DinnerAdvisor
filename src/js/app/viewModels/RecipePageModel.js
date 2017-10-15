@@ -3,12 +3,12 @@ define(
   //-------------------------------------------------------------------
   // DEPENDENCIES
   //-------------------------------------------------------------------
-  ["knockout", "RecipeModel"],
+  ["knockout", "RecipeModel", "SorterModel", "PagerModel"],
 
   //-------------------------------------------------------------------
   // MODULE DEFINITION
   //-------------------------------------------------------------------
-  function(ko, $){
+  function(ko){
     "use strict";
 
     function RecipePageModel(data){
