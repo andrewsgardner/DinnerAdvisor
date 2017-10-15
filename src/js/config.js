@@ -7,7 +7,9 @@ requirejs.config({
     "bootstrap": "bootstrap-3.3.7",
     "app": "../app",
     "RecipeModel": "../app/viewModels/RecipeModel",
-    "RecipePageModel": "../app/viewModels/RecipePageModel"
+    "RecipePageModel": "../app/viewModels/RecipePageModel",
+    "PagerModel": "../app/viewModels/PagerModel",
+    "SorterModel": "../app/viewModels/SorterModel"
   },
   shim: {
     "ko": {
