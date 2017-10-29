@@ -9,7 +9,8 @@ requirejs.config({
     "RecipeModel": "../app/viewModels/RecipeModel",
     "RecipePageModel": "../app/viewModels/RecipePageModel",
     "PagerModel": "../app/viewModels/PagerModel",
-    "SorterModel": "../app/viewModels/SorterModel"
+    "SorterModel": "../app/viewModels/SorterModel",
+    "FilterModel": "../app/viewModels/FilterModel"
   },
   shim: {
     "ko": {

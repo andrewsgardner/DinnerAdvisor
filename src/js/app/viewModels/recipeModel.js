@@ -8,7 +8,7 @@ define(
   //-------------------------------------------------------------------
   // MODULE DEFINITION
   //-------------------------------------------------------------------
-  function(ko, $){
+  function(ko){
     "use strict";
 
     function RecipeModel(data){
